@@ -1,4 +1,4 @@
-<div class="m-3">
+<div class="bg-primary">
   <div>
     <%= link_to "My Lists", lists_path, class: "btn btn-primary" %>
     <%= link_to "+ New", new_list_path, class: "btn btn-primary" %>
@@ -12,9 +12,15 @@
       <% @bookmarks.each do |bookmark| %>
       <div class="card p-3 my-3">
         <div>
-          <h3><%= bookmark.movie.title %> (<%= bookmark.movie.rating %>)</h3>
-          <p class="mt-0">"<%= bookmark.comment %>"</p>
-          <%= link_to "Delete Bookmark", list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }, class: "btn btn-outline-warning btn-sm" %>
+          <img src="<%= bookmark.movie.poster_url %>" width="100" class="mb-3">
+        </div>
+        <div>
+          <div class="mb-2">
+            <h3 class="d-inline"><%= bookmark.movie.title %></h3>
+            <h4 class="d-inline m-2">(<%= bookmark.movie.rating %>)</h4>
+          </div>
+          <p><i>"<%= bookmark.comment %>"</i></p>
+          <%= link_to "Delete Bookmark", list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }, class: "btn btn-outline-primary btn-sm" %>
         </div>
       </div>
       <% end %>
