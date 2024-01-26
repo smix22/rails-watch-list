@@ -6,25 +6,22 @@
 </div>
 
 <div class="container m-3 p-3">
-  <div class="row">
-    <div class="col-6">
-      <h2><%= @list.name %></h2>
-      <% @bookmarks.each do |bookmark| %>
-      <div class="card p-3 my-3">
-        <div>
-          <img src="<%= bookmark.movie.poster_url %>" width="100" class="mb-3">
-        </div>
-        <div>
-          <div class="mb-2">
-            <h3 class="d-inline"><%= bookmark.movie.title %></h3>
-            <h4 class="d-inline m-2">(<%= bookmark.movie.rating %>)</h4>
-          </div>
-          <p><i>"<%= bookmark.comment %>"</i></p>
-          <%= link_to "Delete Bookmark", list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }, class: "btn btn-outline-primary btn-sm" %>
-        </div>
+  <div>
+    <h2><%= @list.name %></h2>
+    <%= link_to "Add Bookmark", new_list_bookmark_path(@list), class: "btn btn-primary" %>
+  </div>
+  <% @bookmarks.each do |bookmark| %>
+  <div class="d-flex">
+    <div class="card p-3 my-3" style="width: 18rem;">
+      <img src="<%= bookmark.movie.poster_url %>" width="100" class="card-img-top mb-3">
+      <div class="mb-2">
+        <h3 class="d-inline"><%= bookmark.movie.title %></h3>
+        <h4 class="d-inline m-2">(<%= bookmark.movie.rating %>)</h4>
       </div>
-      <% end %>
-      <div><%= link_to "Add Bookmark", new_list_bookmark_path(@list), class: "btn btn-primary" %></div>
+      <p><i>"<%= bookmark.comment %>"</i></p>
+      <%= link_to "Delete Bookmark", list_bookmark_path(@list, bookmark), data: { turbo_method: :delete }, class: "btn btn-outline-primary btn-sm" %>
     </div>
+    <div class="m-2"></div>
+    <% end %>
   </div>
 </div>

@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
+gem "cloudinary"
+
 gem "bootstrap", "~> 5.2"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"

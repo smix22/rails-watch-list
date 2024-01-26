@@ -6,15 +6,13 @@
 </div>
 
 <div class="container m-3 p-3">
-  <div class="row">
-    <div class="col-6">
-      <h2>My Lists</h2>
-      <% @lists.each do |list| %>
-      <div class="card p-3 my-3">
-        <h3><%= list.name %></h3>
+  <h2>My Lists</h2>
+  <% @lists.each do |list| %>
+    <div style="width: 18rem;">
+      <div class="card p-3 my-3" style="background-image: url('<%= cl_image_path list.photo.key %>')">
+        <h3 class="text-light"><%= list.name %></h3>
         <div><%= link_to "See Movies", list_path(list), class: "btn btn-primary" %></div>
       </div>
-      <% end %>
     </div>
-  </div>
+  <% end %>
 </div>
